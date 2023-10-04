@@ -55,7 +55,10 @@ public class SignIn extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        // processRequest(request, response);
+        
+        response.sendRedirect("/servlets_form");
+        
     }
 
     /**
@@ -80,13 +83,18 @@ public class SignIn extends HttpServlet {
         
         System.out.println(user);
         
+        request.getSession().invalidate();
+        
+        
         if (!"admin".equals(user)) {
-            response.getWriter().print("Usuario Incorrecto");
+            request.getSession().setAttribute("error", "Usuario Incorrecto");
         } else if (!"1234".equals(password)) {
-            response.getWriter().print("Contraseña Incorrecta");
+            request.getSession().setAttribute("error", "Contraseña Incorrecta");
         } else {
-            response.getWriter().print("Autenticación Satisfactoria");
+            request.getSession().setAttribute("success", "Autenticación exitosa");
         }
+        
+        response.sendRedirect("/servlets_form");
     }
 
     /**

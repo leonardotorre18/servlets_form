@@ -18,10 +18,11 @@
     <body class="text-gray-200 bg-[url('background.jpg')] py-16">
         <!-- <h1 class="text-3xl text-center pt-16 pb-24">Página de ingreso al sistema</h1> -->
         
+        
         <form 
             method="POST" 
             action="signin" 
-            class="py-12 px-8 bg-zinc-800 flex w-4/5 max-w-4xl mx-auto my-4 flex-col items-center rounded gap-8 bg-opacity-95"
+            class="py-12 px-8 bg-zinc-800 flex w-4/5 max-w-4xl mx-auto my-4 flex-col items-center rounded gap-8 bg-opacity-90"
         >
             <div class="w-full items-center">
                <label 
@@ -52,10 +53,26 @@
             
             <button 
                 type="submit"
-                class="bg-gradient-to-tr from-indigo-800 to-blue-800 font-bold  py-2 px-6 rounded hover:bg-none hover:ring hover:ring-indigo-800 hover:text-gray-200"
+                class="transition bg-gradient-to-tr from-indigo-800 to-blue-800 font-bold  py-2 px-6 rounded hover:bg-none hover:ring hover:ring-indigo-800 hover:text-gray-200"
              >
                 Ingresar al Sistema
             </button>
+            
+            <% 
+                Object error = request.getSession().getAttribute("error");
+                Object success = request.getSession().getAttribute("success");
+                
+                if (error instanceof String) {
+            %>
+            <p class="bg-red-800 py-2 px-4 rounded"><%= error %></p>
+            <%
+                } else if (success instanceof String) {
+            %>
+            <p class="bg-green-800 py-2 px-4 rounded"><%= success %></p>
+            <%
+                }
+                request.getSession().invalidate();
+            %>
         </form>
     </body>
 </html>
