@@ -45,7 +45,7 @@
                </label>
                 <input
                     placeholder="Ingresar contraseña..."
-                    type="text" 
+                    type="password" 
                     name="password" 
                     class="w-full mt-4 px-2 rounded bg-neutral-900 outline-none focus:bg-gray-200 focus:text-neutral-900 focus:font-semibold py-3 px-6 rounded"
                 > 
@@ -64,11 +64,11 @@
                 
                 if (error instanceof String) {
             %>
-            <p class="bg-red-800 py-2 px-4 rounded"><%= error %></p>
+            <p class="bg-red-800 py-1 px-3 rounded text-sm"><%= error %></p>
             <%
                 } else if (success instanceof String) {
             %>
-            <p class="bg-green-800 py-2 px-4 rounded"><%= success %></p>
+            <p class="bg-green-800 py-1 px-3 rounded text-sm"><%= success %></p>
             <%
                 }
                 request.getSession().invalidate();
