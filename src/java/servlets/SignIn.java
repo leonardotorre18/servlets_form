@@ -78,16 +78,16 @@ public class SignIn extends HttpServlet {
         
         System.out.println(user + password);
         
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json");
         
         System.out.println(user);
         
         if (!"admin".equals(user)) {
-            response.getWriter().print("Usuario Incorrecto");
+            response.getWriter().print("[{message: 'Usuario Incorrecto'}]");
         } else if (!"1234".equals(password)) {
-            response.getWriter().print("Contraseña Incorrecta");
+            response.getWriter().print("[{message: 'Contraseña Incorrecta'}]");
         } else {
-            response.getWriter().print("Autenticación Satisfactoria");
+            response.getWriter().print("[{message: 'Autenticación Satisfactoria'}]");
         }
     }
 
