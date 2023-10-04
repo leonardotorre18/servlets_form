@@ -82,7 +82,7 @@ public class SignIn extends HttpServlet {
         
         if (!"admin".equals(user)) {
             response.getWriter().print("Usuario Incorrecto");
-        } else if (!"123".equals(password)) {
+        } else if (!"1234".equals(password)) {
             response.getWriter().print("Contraseña Incorrecta");
         } else {
             response.getWriter().print("Autenticación Satisfactoria");
